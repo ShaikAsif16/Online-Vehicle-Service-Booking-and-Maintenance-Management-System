@@ -27,7 +27,7 @@ const VehicleManagement = () => {
     fetchVehicles();
   }, []);
 
-  const types = ['All', 'car', 'motorcycle', 'scooter'];
+  const types = ['All', 'supercar', 'hypercar', 'car', 'motorcycle', 'scooter'];
   const fuelTypes = ['All', 'Petrol', 'Diesel', 'Electric', 'Hybrid', 'CNG'];
 
   const filtered = vehicles.filter((v) => {
@@ -54,7 +54,7 @@ const VehicleManagement = () => {
           Vehicle Fleet Registry
         </h1>
         <p className="text-xs sm:text-sm text-slate-400">
-          All client registered cars, motorcycles, and scooters in the workshop database.
+          All client registered supercars, hypercars, and high-performance exotics in the workshop database.
         </p>
       </div>
 
@@ -130,14 +130,22 @@ const VehicleManagement = () => {
                 <span className="font-mono text-xs font-bold text-automotive-orange bg-dark-850 px-2.5 py-1 rounded-lg border border-dark-750">
                   {v.registrationNumber}
                 </span>
-                <span className="text-[10px] font-bold capitalize text-slate-300 bg-dark-800 px-2.5 py-0.5 rounded-full border border-dark-750">
+                <span
+                  className={`text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${
+                    v.type === 'hypercar'
+                      ? 'text-fuchsia-400 bg-fuchsia-500/10 border-fuchsia-500/30'
+                      : v.type === 'supercar'
+                      ? 'text-amber-400 bg-amber-500/10 border-amber-500/30'
+                      : 'text-slate-300 bg-dark-800 border-dark-750'
+                  }`}
+                >
                   {v.type}
                 </span>
               </div>
 
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-dark-800 border border-dark-700 flex items-center justify-center text-automotive-orange text-xl">
-                  {v.type === 'motorcycle' ? '🏍' : v.type === 'scooter' ? '🛵' : '🚗'}
+                <div className="w-12 h-12 rounded-2xl bg-dark-800 border border-dark-700 flex items-center justify-center text-automotive-orange text-2xl">
+                  {v.type === 'hypercar' ? '🚀' : v.type === 'supercar' ? '🏎️' : v.type === 'motorcycle' ? '🏍' : '🚗'}
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-white">

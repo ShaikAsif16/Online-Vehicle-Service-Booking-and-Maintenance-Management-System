@@ -37,8 +37,8 @@ const serviceSchema = new mongoose.Schema(
     },
     applicableVehicleTypes: {
       type: [String],
-      enum: ['car', 'motorcycle', 'scooter'],
-      default: ['car', 'motorcycle', 'scooter'],
+      enum: ['supercar', 'hypercar', 'car', 'motorcycle', 'scooter'],
+      default: ['supercar', 'hypercar', 'car', 'motorcycle', 'scooter'],
     },
     includedTasks: {
       type: [String],

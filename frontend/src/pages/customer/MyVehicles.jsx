@@ -47,7 +47,7 @@ const MyVehicles = () => {
   const handleOpenAdd = () => {
     setSelectedVehicle(null);
     setFormData({
-      type: 'car',
+      type: 'supercar',
       registrationNumber: '',
       brand: '',
       model: '',
@@ -129,7 +129,7 @@ const MyVehicles = () => {
             My Registered Vehicles
           </h1>
           <p className="text-xs sm:text-sm text-slate-400">
-            Manage your personal garage fleet across cars, motorcycles, and scooters.
+            Manage your personal garage fleet across supercars, hypercars, and exotic vehicles.
           </p>
         </div>
 
@@ -148,7 +148,7 @@ const MyVehicles = () => {
           <Car className="w-14 h-14 text-slate-400 mx-auto" />
           <h3 className="text-lg font-bold text-white">Your Garage is Empty</h3>
           <p className="text-xs text-slate-400 max-w-sm mx-auto">
-            You haven't registered any vehicles yet. Add your car, motorcycle, or scooter to book
+            You haven't registered any vehicles yet. Add your supercar, hypercar, or exotic vehicle to book
             expert service appointments.
           </p>
           <button
@@ -170,14 +170,22 @@ const MyVehicles = () => {
                   <span className="text-xs font-mono font-bold text-white bg-dark-850 px-2.5 py-1 rounded-lg border border-dark-750 uppercase tracking-wider">
                     {v.registrationNumber}
                   </span>
-                  <span className="text-[11px] font-bold capitalize text-automotive-orange bg-automotive-orange/10 px-2.5 py-0.5 rounded-full border border-automotive-orange/20">
+                  <span
+                    className={`text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${
+                      v.type === 'hypercar'
+                        ? 'text-fuchsia-400 bg-fuchsia-500/10 border-fuchsia-500/30'
+                        : v.type === 'supercar'
+                        ? 'text-amber-400 bg-amber-500/10 border-amber-500/30'
+                        : 'text-automotive-orange bg-automotive-orange/10 border-automotive-orange/20'
+                    }`}
+                  >
                     {v.type}
                   </span>
                 </div>
 
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-2xl bg-dark-800 border border-dark-700 flex items-center justify-center text-automotive-orange text-xl">
-                    {v.type === 'motorcycle' ? '🏍' : v.type === 'scooter' ? '🛵' : '🚗'}
+                  <div className="w-12 h-12 rounded-2xl bg-dark-800 border border-dark-700 flex items-center justify-center text-automotive-orange text-2xl">
+                    {v.type === 'hypercar' ? '🚀' : v.type === 'supercar' ? '🏎️' : v.type === 'motorcycle' ? '🏍' : '🚗'}
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-white">
@@ -259,8 +267,10 @@ const MyVehicles = () => {
                 onChange={(e) => setFormData({ ...formData, type: e.target.value })}
                 className="w-full bg-dark-850 border border-dark-750 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-automotive-orange capitalize"
               >
-                <option value="car">Car</option>
-                <option value="motorcycle">Motorcycle</option>
+                <option value="supercar">Supercar</option>
+                <option value="hypercar">Hypercar</option>
+                <option value="car">Sports Car</option>
+                <option value="motorcycle">Superbike</option>
                 <option value="scooter">Scooter</option>
               </select>
             </div>
@@ -273,7 +283,7 @@ const MyVehicles = () => {
                 type="text"
                 required
                 disabled={!!selectedVehicle}
-                placeholder="e.g. TS09EA1024"
+                placeholder="e.g. TS09SF9000"
                 value={formData.registrationNumber}
                 onChange={(e) =>
                   setFormData({ ...formData, registrationNumber: e.target.value.toUpperCase() })
@@ -289,7 +299,7 @@ const MyVehicles = () => {
               <input
                 type="text"
                 required
-                placeholder="e.g. Honda, Yamaha, TVS, BMW"
+                placeholder="e.g. Ferrari, Bugatti, Lamborghini, Porsche, Koenigsegg"
                 value={formData.brand}
                 onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
                 className="w-full bg-dark-850 border border-dark-750 rounded-xl px-4 py-2 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-automotive-orange"
@@ -301,7 +311,7 @@ const MyVehicles = () => {
               <input
                 type="text"
                 required
-                placeholder="e.g. Civic ZX, R15 V4, Jupiter"
+                placeholder="e.g. SF90 Stradale, Chiron Super Sport, Revuelto, 911 GT3 RS, Jesko"
                 value={formData.model}
                 onChange={(e) => setFormData({ ...formData, model: e.target.value })}
                 className="w-full bg-dark-850 border border-dark-750 rounded-xl px-4 py-2 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-automotive-orange"

@@ -53,8 +53,8 @@ const sparePartSchema = new mongoose.Schema(
     },
     compatibleVehicleTypes: {
       type: [String],
-      enum: ['car', 'motorcycle', 'scooter'],
-      default: ['car', 'motorcycle', 'scooter'],
+      enum: ['supercar', 'hypercar', 'car', 'motorcycle', 'scooter'],
+      default: ['supercar', 'hypercar', 'car', 'motorcycle', 'scooter'],
     },
     location: {
       type: String,

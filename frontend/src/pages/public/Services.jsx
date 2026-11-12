@@ -32,7 +32,7 @@ const Services = () => {
     'Body & Detailing',
   ];
 
-  const vehicleTypes = ['All', 'car', 'motorcycle', 'scooter'];
+  const vehicleTypes = ['All', 'supercar', 'hypercar', 'car'];
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -66,11 +66,11 @@ const Services = () => {
           FACTORY-SPECIFIED CATALOG
         </span>
         <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight font-['Space_Grotesk']">
-          Vehicle Service Packages
+          Supercar & Hypercar Service Packages
         </h1>
         <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
-          Transparent pricing, pre-defined labor hours, and certified checklist audits for cars,
-          motorcycles, and scooters.
+          Transparent pricing, pre-defined labor hours, and certified checklist audits for supercars,
+          hypercars, and high-performance exotics.
         </p>
       </div>
 

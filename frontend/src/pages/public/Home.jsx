@@ -63,8 +63,8 @@ const Home = () => {
               </h1>
 
               <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-                Book factory-certified maintenance for your car, motorcycle, or scooter. Enjoy
-                real-time workshop bay tracking, certified technician diagnostics, 100% genuine
+                Book factory-certified maintenance for your supercar, hypercar, or exotic high-performance vehicle.
+                Enjoy real-time workshop bay tracking, certified technician diagnostics, 100% genuine
                 OEM parts, and transparent itemized invoicing.
               </p>
 

@@ -155,16 +155,16 @@ const runTestSuite = async () => {
         },
       },
       {
-        type: 'car',
+        type: 'supercar',
         registrationNumber: regVehNum,
-        brand: 'Volkswagen',
-        model: 'Virtus GT',
+        brand: 'Ferrari',
+        model: 'SF90 Stradale',
         year: 2023,
-        fuelType: 'Petrol',
+        fuelType: 'Hybrid',
         mileage: 18000,
       }
     );
-    assert(vehRes.status === 201 && vehRes.body.vehicle?.brand === 'Volkswagen', '7. Vehicle Registration to Fleet');
+    assert(vehRes.status === 201 && vehRes.body.vehicle?.brand === 'Ferrari', '7. Vehicle Registration to Fleet');
     const newVehicleId = vehRes.body.vehicle._id;
 
     // 8. Fetch available services

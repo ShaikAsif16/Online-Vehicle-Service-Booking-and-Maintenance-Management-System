@@ -41,7 +41,7 @@ const runSeedInline = async () => {
         status: 'available',
         currentWorkload: 1,
         rating: 4.9,
-        certifications: ['Master Automotive Technician (ASE-A1)', 'Bosch High Pressure Injection Specialist'],
+        certifications: ['FIA Certified High-Performance Master Tech', 'Ferrari & Bugatti W16 Powertrain Specialist'],
       },
       {
         user: elena._id,
@@ -50,7 +50,7 @@ const runSeedInline = async () => {
         status: 'available',
         currentWorkload: 1,
         rating: 4.8,
-        certifications: ['Automotive CAN-Bus Diagnostics Expert', 'Section 609 EPA Refrigerant License'],
+        certifications: ['800V High-Voltage Hybrid Diagnostics Expert', 'McLaren Applied Telemetry & CAN-FD'],
       },
       {
         user: rajesh._id,
@@ -59,100 +59,113 @@ const runSeedInline = async () => {
         status: 'available',
         currentWorkload: 0,
         rating: 4.9,
-        certifications: ['Advanced Chassis Alignment Certified', 'Brembo Brake Systems Tech'],
+        certifications: ['Brembo CCM-R Carbon Ceramic Specialist', 'Ohlins Active Dynamics & Pushrod Alignment'],
       },
     ]);
 
     const createdServices = await Service.insertMany(seedServices);
     const createdParts = await SparePart.insertMany(seedSpareParts);
 
+    // Seeded Fleet: 100% Supercars & Hypercars
     const vehicles = await Vehicle.insertMany([
       {
         owner: alex._id,
-        type: 'car',
-        registrationNumber: 'TS09EA1024',
-        brand: 'Honda',
-        model: 'Civic ZX',
-        year: 2021,
-        fuelType: 'Petrol',
-        mileage: 38400,
-        color: 'Meteoroid Grey Metallic',
-        notes: 'Regular synthetic oil service history.',
+        type: 'supercar',
+        registrationNumber: 'TS09SF9000',
+        brand: 'Ferrari',
+        model: 'SF90 Stradale Assetto Fiorano',
+        year: 2023,
+        fuelType: 'Hybrid',
+        mileage: 4200,
+        color: 'Rosso Corsa Red',
+        notes: 'Twin-Turbo 4.0L V8 PHEV (1,000 CV), carbon aerodynamic pack, Brembo CCM-R brakes.',
       },
       {
         owner: alex._id,
-        type: 'motorcycle',
-        registrationNumber: 'TS09FX8899',
-        brand: 'Yamaha',
-        model: 'YZF-R15 V4',
+        type: 'supercar',
+        registrationNumber: 'TS09GT3992',
+        brand: 'Porsche',
+        model: '911 GT3 RS Weissach',
+        year: 2024,
+        fuelType: 'Petrol',
+        mileage: 2800,
+        color: 'Shark Blue',
+        notes: 'Naturally Aspirated 4.0L Boxer-6 (525 PS), active DRS carbon wing, magnesium center-lock wheels.',
+      },
+      {
+        owner: priya._id,
+        type: 'supercar',
+        registrationNumber: 'TS07LB6300',
+        brand: 'Lamborghini',
+        model: 'Revuelto V12 HPEV',
+        year: 2024,
+        fuelType: 'Hybrid',
+        mileage: 1850,
+        color: 'Giallo Inti Pearl Yellow',
+        notes: '6.5L Mid-Mounted V12 with 3 Axial Flux Electric Motors (1015 CV), carbon monocoque chassis.',
+      },
+      {
+        owner: priya._id,
+        type: 'supercar',
+        registrationNumber: 'TS08MC7650',
+        brand: 'McLaren',
+        model: '765LT Spider',
         year: 2023,
         fuelType: 'Petrol',
-        mileage: 9200,
-        color: 'Racing Blue',
-        notes: 'Slight clutch play detected at cold start.',
-      },
-      {
-        owner: priya._id,
-        type: 'scooter',
-        registrationNumber: 'TS07HK4455',
-        brand: 'TVS',
-        model: 'Jupiter 125',
-        year: 2022,
-        fuelType: 'Petrol',
-        mileage: 14500,
-        color: 'Pristine White',
-        notes: 'Front drum brake squeak.',
-      },
-      {
-        owner: priya._id,
-        type: 'car',
-        registrationNumber: 'TS08MC7711',
-        brand: 'Hyundai',
-        model: 'Creta SX(O)',
-        year: 2022,
-        fuelType: 'Diesel',
-        mileage: 26800,
-        color: 'Phantom Black',
-        notes: 'AC cooling efficiency check requested.',
+        mileage: 3900,
+        color: 'Curacao Blue Metallic',
+        notes: '4.0L Twin-Turbo V8 (765 PS), quad titanium exhaust, lightweight carbon fiber bodywork.',
       },
       {
         owner: david._id,
-        type: 'car',
-        registrationNumber: 'TS10BK9900',
-        brand: 'BMW',
-        model: '330i M Sport',
-        year: 2022,
+        type: 'hypercar',
+        registrationNumber: 'TS10BG3000',
+        brand: 'Bugatti',
+        model: 'Chiron Super Sport 300+',
+        year: 2023,
         fuelType: 'Petrol',
-        mileage: 21500,
-        color: 'Portimao Blue',
-        notes: 'Performance check & brake inspection.',
+        mileage: 1600,
+        color: 'Exposed Carbon & Jet Orange',
+        notes: '8.0L Quad-Turbo W16 Engine (1600 HP), 300+ mph aerodynamically optimized longtail body.',
+      },
+      {
+        owner: david._id,
+        type: 'hypercar',
+        registrationNumber: 'TS10KJ1600',
+        brand: 'Koenigsegg',
+        model: 'Jesko Attack',
+        year: 2024,
+        fuelType: 'Petrol',
+        mileage: 820,
+        color: 'Crystal White with Carbon Accents',
+        notes: '5.0L Twin-Turbo V8 flat-plane crank (1600 BHP on E85), 9-speed Light Speed Transmission (LST).',
       },
     ]);
 
-    const [alexCar, alexMoto, priyaScooter, priyaCar, davidCar] = vehicles;
+    const [ferrariSF90, porscheGT3, lamboRevuelto, mclaren765, bugattiChiron, koenigseggJesko] = vehicles;
 
-    // Completed Booking with PAID invoice
-    const generalService = createdServices.find((s) => s.category === 'General Maintenance');
-    const oilPart = createdParts.find((p) => p.partNumber === 'OIL-SYN-5W40-4L');
-    const filterPart = createdParts.find((p) => p.partNumber === 'FLT-OIL-OEM-01');
+    // Completed Booking with PAID invoice (Ferrari SF90)
+    const trackService = createdServices.find((s) => s.category === 'General Maintenance');
+    const oilPart = createdParts.find((p) => p.partNumber === 'OIL-MOTUL-300V-5L');
+    const filterPart = createdParts.find((p) => p.partNumber === 'FLT-BMC-CARBON-01');
 
     const completedBooking = await Booking.create({
       bookingReference: 'BK-20261101-1001',
       customer: alex._id,
-      vehicle: alexCar._id,
-      service: generalService._id,
+      vehicle: ferrariSF90._id,
+      service: trackService._id,
       bookingDate: '2026-11-01',
       timeSlot: '09:00 AM - 10:00 AM',
-      complaints: 'Routine 40,000 km periodic service and oil change.',
-      additionalInstructions: 'Please check battery terminal health and tire pressures.',
+      complaints: 'Pre-flight circuit telemetry inspection and high-performance racing oil renewal.',
+      additionalInstructions: 'Check center-lock wheel torque and test active DRS rear wing actuator.',
       status: 'Completed',
       assignedMechanic: marcus._id,
-      estimatedCost: generalService.basePrice,
-      laborCost: 2999,
+      estimatedCost: trackService.basePrice,
+      laborCost: 12500,
       partsCost: oilPart.sellingPrice + filterPart.sellingPrice,
-      totalCost: 2999 + oilPart.sellingPrice + filterPart.sellingPrice,
-      diagnosis: 'Vehicle in good running condition. Engine oil degradation noted as expected at 10k interval.',
-      repairNotes: 'Drained engine oil, replaced oil filter, replenished 4L Castrol 5W-40. Cleaned air filter and topped brake fluid.',
+      totalCost: 12500 + oilPart.sellingPrice + filterPart.sellingPrice,
+      diagnosis: 'Vehicle telemetry nominal. Motul 300V Ester Core oil and carbon airbox filter replenished.',
+      repairNotes: 'Torqued all 4 center-lock hubs to 600 Nm spec. Flushed cooling circuits. Road-tested to 120 km/h on closed strip.',
       partsUsed: [
         { part: oilPart._id, partName: oilPart.name, partNumber: oilPart.partNumber, quantity: 1, unitPrice: oilPart.sellingPrice, totalPrice: oilPart.sellingPrice },
         { part: filterPart._id, partName: filterPart.name, partNumber: filterPart.partNumber, quantity: 1, unitPrice: filterPart.sellingPrice, totalPrice: filterPart.sellingPrice },
@@ -161,9 +174,9 @@ const runSeedInline = async () => {
       statusHistory: [
         { status: 'Pending', changedAt: new Date('2026-10-31T09:00:00Z'), changedBy: alex._id, note: 'Initial booking request' },
         { status: 'Confirmed', changedAt: new Date('2026-10-31T10:00:00Z'), changedBy: admin._id, note: 'Approved by workshop' },
-        { status: 'Mechanic Assigned', changedAt: new Date('2026-10-31T11:00:00Z'), changedBy: admin._id, note: 'Assigned to Marcus' },
-        { status: 'In Progress', changedAt: new Date('2026-11-01T09:15:00Z'), changedBy: marcus._id, note: 'Work commenced' },
-        { status: 'Completed', changedAt: new Date('2026-11-01T12:30:00Z'), changedBy: marcus._id, note: 'All tasks completed & road-tested' },
+        { status: 'Mechanic Assigned', changedAt: new Date('2026-10-31T11:00:00Z'), changedBy: admin._id, note: 'Assigned to Marcus Vance' },
+        { status: 'In Progress', changedAt: new Date('2026-11-01T09:15:00Z'), changedBy: marcus._id, note: 'Work commenced in Bay 1' },
+        { status: 'Completed', changedAt: new Date('2026-11-01T12:30:00Z'), changedBy: marcus._id, note: 'All track checks signed off' },
       ],
     });
 
@@ -175,10 +188,10 @@ const runSeedInline = async () => {
       invoiceNumber: 'INV-202611-1001',
       booking: completedBooking._id,
       customer: alex._id,
-      vehicle: alexCar._id,
+      vehicle: ferrariSF90._id,
       issueDate: new Date('2026-11-01T12:35:00Z'),
       items: [
-        { description: `Labor: ${generalService.name}`, quantity: 1, unitPrice: completedBooking.laborCost, amount: completedBooking.laborCost, type: 'labor' },
+        { description: `Labor: ${trackService.name}`, quantity: 1, unitPrice: completedBooking.laborCost, amount: completedBooking.laborCost, type: 'labor' },
         { description: `Part: ${oilPart.name}`, quantity: 1, unitPrice: oilPart.sellingPrice, amount: oilPart.sellingPrice, type: 'part' },
         { description: `Part: ${filterPart.name}`, quantity: 1, unitPrice: filterPart.sellingPrice, amount: filterPart.sellingPrice, type: 'part' },
       ],
@@ -212,13 +225,13 @@ const runSeedInline = async () => {
     });
 
     await ServiceRecord.create({
-      vehicle: alexCar._id,
+      vehicle: ferrariSF90._id,
       booking: completedBooking._id,
       customer: alex._id,
       mechanic: marcus._id,
-      serviceName: generalService.name,
+      serviceName: trackService.name,
       serviceDate: new Date('2026-11-01T12:30:00Z'),
-      mileageAtService: 38400,
+      mileageAtService: 4200,
       diagnosis: completedBooking.diagnosis,
       repairNotes: completedBooking.repairNotes,
       partsReplaced: [
@@ -229,41 +242,41 @@ const runSeedInline = async () => {
       partsCost: completedBooking.partsCost,
       totalAmount: total1,
       nextServiceRecommendedDate: new Date('2026-05-01'),
-      nextServiceMileage: 48400,
+      nextServiceMileage: 10000,
     });
 
-    // Completed Booking with UNPAID invoice
-    const acService = createdServices.find((s) => s.category === 'AC & Climate Control');
-    const acGas = createdParts.find((p) => p.partNumber === 'GAS-R134A-1KG');
-    const cabinFilter = createdParts.find((p) => p.partNumber === 'FLT-CAB-HEPA-02');
+    // Completed Booking with UNPAID invoice (McLaren 765LT)
+    const aeroService = createdServices.find((s) => s.category === 'AC & Climate Control');
+    const cabinFilter = createdParts.find((p) => p.partNumber === 'FLT-CAB-CARBON-02');
+    const srfFluid = createdParts.find((p) => p.partNumber === 'FLUID-CASTROL-SRF');
 
     const completedUnpaidBooking = await Booking.create({
       bookingReference: 'BK-20261108-2042',
       customer: priya._id,
-      vehicle: priyaCar._id,
-      service: acService._id,
+      vehicle: mclaren765._id,
+      service: aeroService._id,
       bookingDate: '2026-11-08',
       timeSlot: '11:00 AM - 12:00 PM',
-      complaints: 'Air conditioner takes too long to cool cabin in afternoons.',
+      complaints: 'Active rear wing hydraulic speed brake deploy test and climate sterilization.',
       status: 'Completed',
       assignedMechanic: elena._id,
-      estimatedCost: acService.basePrice,
-      laborCost: acService.basePrice,
-      partsCost: acGas.sellingPrice + cabinFilter.sellingPrice,
-      totalCost: acService.basePrice + acGas.sellingPrice + cabinFilter.sellingPrice,
-      diagnosis: 'Refrigerant pressure low (24 psi). Cabin filter clogged with road dust.',
-      repairNotes: 'Vacuum tested system for micro leaks (passed). Recharged 1kg R134a refrigerant and installed new active carbon cabin filter.',
+      estimatedCost: aeroService.basePrice,
+      laborCost: aeroService.basePrice,
+      partsCost: cabinFilter.sellingPrice + srfFluid.sellingPrice,
+      totalCost: aeroService.basePrice + cabinFilter.sellingPrice + srfFluid.sellingPrice,
+      diagnosis: 'Hydraulic active wing servo pressure recalibrated. Air sterilization complete.',
+      repairNotes: 'Flushed hydraulic actuator lines and installed graphene anti-microbial cabin filter.',
       partsUsed: [
-        { part: acGas._id, partName: acGas.name, partNumber: acGas.partNumber, quantity: 1, unitPrice: acGas.sellingPrice, totalPrice: acGas.sellingPrice },
         { part: cabinFilter._id, partName: cabinFilter.name, partNumber: cabinFilter.partNumber, quantity: 1, unitPrice: cabinFilter.sellingPrice, totalPrice: cabinFilter.sellingPrice },
+        { part: srfFluid._id, partName: srfFluid.name, partNumber: srfFluid.partNumber, quantity: 1, unitPrice: srfFluid.sellingPrice, totalPrice: srfFluid.sellingPrice },
       ],
       actualCompletionDate: new Date('2026-11-08T13:45:00Z'),
       statusHistory: [
         { status: 'Pending', changedAt: new Date('2026-11-07T14:00:00Z'), changedBy: priya._id, note: 'Booked online' },
         { status: 'Confirmed', changedAt: new Date('2026-11-07T15:00:00Z'), changedBy: admin._id, note: 'Confirmed by manager' },
-        { status: 'Mechanic Assigned', changedAt: new Date('2026-11-07T16:00:00Z'), changedBy: admin._id, note: 'Assigned to Elena' },
-        { status: 'In Progress', changedAt: new Date('2026-11-08T11:10:00Z'), changedBy: elena._id, note: 'Vacuum & diagnostics started' },
-        { status: 'Completed', changedAt: new Date('2026-11-08T13:45:00Z'), changedBy: elena._id, note: 'Service complete & cabin sanitized' },
+        { status: 'Mechanic Assigned', changedAt: new Date('2026-11-07T16:00:00Z'), changedBy: admin._id, note: 'Assigned to Elena Rostova' },
+        { status: 'In Progress', changedAt: new Date('2026-11-08T11:10:00Z'), changedBy: elena._id, note: 'Telemetry scan initiated' },
+        { status: 'Completed', changedAt: new Date('2026-11-08T13:45:00Z'), changedBy: elena._id, note: 'Service complete & certified' },
       ],
     });
 
@@ -275,12 +288,12 @@ const runSeedInline = async () => {
       invoiceNumber: 'INV-202611-2042',
       booking: completedUnpaidBooking._id,
       customer: priya._id,
-      vehicle: priyaCar._id,
+      vehicle: mclaren765._id,
       issueDate: new Date('2026-11-08T13:50:00Z'),
       items: [
-        { description: `Labor: ${acService.name}`, quantity: 1, unitPrice: completedUnpaidBooking.laborCost, amount: completedUnpaidBooking.laborCost, type: 'labor' },
-        { description: `Part: ${acGas.name}`, quantity: 1, unitPrice: acGas.sellingPrice, amount: acGas.sellingPrice, type: 'part' },
+        { description: `Labor: ${aeroService.name}`, quantity: 1, unitPrice: completedUnpaidBooking.laborCost, amount: completedUnpaidBooking.laborCost, type: 'labor' },
         { description: `Part: ${cabinFilter.name}`, quantity: 1, unitPrice: cabinFilter.sellingPrice, amount: cabinFilter.sellingPrice, type: 'part' },
+        { description: `Part: ${srfFluid.name}`, quantity: 1, unitPrice: srfFluid.sellingPrice, amount: srfFluid.sellingPrice, type: 'part' },
       ],
       subtotal: subtotal2,
       taxRate: 18,
@@ -294,47 +307,47 @@ const runSeedInline = async () => {
     await completedUnpaidBooking.save();
 
     await ServiceRecord.create({
-      vehicle: priyaCar._id,
+      vehicle: mclaren765._id,
       booking: completedUnpaidBooking._id,
       customer: priya._id,
       mechanic: elena._id,
-      serviceName: acService.name,
+      serviceName: aeroService.name,
       serviceDate: new Date('2026-11-08T13:45:00Z'),
-      mileageAtService: 26800,
+      mileageAtService: 3900,
       diagnosis: completedUnpaidBooking.diagnosis,
       repairNotes: completedUnpaidBooking.repairNotes,
       partsReplaced: [
-        { partName: acGas.name, partNumber: acGas.partNumber, quantity: 1, price: acGas.sellingPrice },
         { partName: cabinFilter.name, partNumber: cabinFilter.partNumber, quantity: 1, price: cabinFilter.sellingPrice },
+        { partName: srfFluid.name, partNumber: srfFluid.partNumber, quantity: 1, price: srfFluid.sellingPrice },
       ],
       laborCost: completedUnpaidBooking.laborCost,
       partsCost: completedUnpaidBooking.partsCost,
       totalAmount: total2,
       nextServiceRecommendedDate: new Date('2027-05-08'),
-      nextServiceMileage: 36800,
+      nextServiceMileage: 8000,
     });
 
-    // In Progress
+    // In Progress Booking (Bugatti Chiron Super Sport 300+)
     const brakeService = createdServices.find((s) => s.category === 'Brakes & Suspension');
-    const brakePadPart = createdParts.find((p) => p.partNumber === 'BRK-PAD-CER-FR');
+    const brakePadPart = createdParts.find((p) => p.partNumber === 'BRK-PAD-BREMBO-CCM');
 
     await Booking.create({
       bookingReference: 'BK-20261111-3011',
       customer: david._id,
-      vehicle: davidCar._id,
+      vehicle: bugattiChiron._id,
       service: brakeService._id,
       bookingDate: '2026-11-12',
       timeSlot: '02:00 PM - 03:00 PM',
-      complaints: 'High speed brake vibration and squeaking sound from front wheels.',
-      additionalInstructions: 'Check brake disc rotor thickness.',
+      complaints: 'Laser resonance scan of front Brembo Carbon Ceramic Matrix rotors before track day.',
+      additionalInstructions: 'Inspect titanium pad clips and heat shields.',
       status: 'In Progress',
       assignedMechanic: marcus._id,
       estimatedCost: brakeService.basePrice,
       laborCost: brakeService.basePrice,
       partsCost: brakePadPart.sellingPrice,
       totalCost: brakeService.basePrice + brakePadPart.sellingPrice,
-      diagnosis: 'Front brake pads worn down to 2.5mm. Left disc rotor has light lateral runout.',
-      repairNotes: 'Mounted vehicle on bay 1 lift. Dismantling caliper assembly and preparing disc surface.',
+      diagnosis: 'CCM-R rotors within 98% nominal thickness. Installing fresh Brembo track pads.',
+      repairNotes: 'Vehicle secured on Bay 1 heavy-duty pneumatic lift. Ultrasonic caliper cleaning underway.',
       partsUsed: [
         { part: brakePadPart._id, partName: brakePadPart.name, partNumber: brakePadPart.partNumber, quantity: 1, unitPrice: brakePadPart.sellingPrice, totalPrice: brakePadPart.sellingPrice },
       ],
@@ -347,21 +360,21 @@ const runSeedInline = async () => {
       ],
     });
 
-    // Mechanic Assigned
-    const ecuService = createdServices.find((s) => s.category === 'Electrical & Diagnostics');
+    // Mechanic Assigned (Porsche 911 GT3 RS Weissach)
+    const hybridService = createdServices.find((s) => s.category === 'Electrical & Diagnostics');
     await Booking.create({
       bookingReference: 'BK-20261112-4022',
       customer: alex._id,
-      vehicle: alexMoto._id,
-      service: ecuService._id,
+      vehicle: porscheGT3._id,
+      service: hybridService._id,
       bookingDate: '2026-11-12',
       timeSlot: '03:00 PM - 04:00 PM',
-      complaints: 'Check engine light blinking occasionally above 7000 RPM.',
+      complaints: 'Telemetry datalogger check and CAN-FD sensor communication validation at 9000 RPM.',
       status: 'Mechanic Assigned',
       assignedMechanic: elena._id,
-      estimatedCost: ecuService.basePrice,
-      laborCost: ecuService.basePrice,
-      totalCost: ecuService.basePrice,
+      estimatedCost: hybridService.basePrice,
+      laborCost: hybridService.basePrice,
+      totalCost: hybridService.basePrice,
       statusHistory: [
         { status: 'Pending', changedAt: new Date('2026-11-11T08:00:00Z'), changedBy: alex._id, note: 'Customer appointment created' },
         { status: 'Confirmed', changedAt: new Date('2026-11-11T10:00:00Z'), changedBy: admin._id, note: 'Approved by admin' },
@@ -369,40 +382,40 @@ const runSeedInline = async () => {
       ],
     });
 
-    // Confirmed
-    const alignService = createdServices.find((s) => s.category === 'Tires & Wheels');
+    // Confirmed (Lamborghini Revuelto V12 HPEV)
+    const pushrodService = createdServices.find((s) => s.category === 'Tires & Wheels');
     await Booking.create({
       bookingReference: 'BK-20261113-5033',
       customer: priya._id,
-      vehicle: priyaScooter._id,
-      service: alignService._id,
+      vehicle: lamboRevuelto._id,
+      service: pushrodService._id,
       bookingDate: '2026-11-13',
       timeSlot: '10:00 AM - 11:00 AM',
-      complaints: 'Handle pulls slightly towards left side when accelerating.',
+      complaints: 'Precision 4-corner corner-weight scale balancing and negative camber track alignment.',
       status: 'Confirmed',
-      estimatedCost: alignService.basePrice,
-      laborCost: alignService.basePrice,
-      totalCost: alignService.basePrice,
+      estimatedCost: pushrodService.basePrice,
+      laborCost: pushrodService.basePrice,
+      totalCost: pushrodService.basePrice,
       statusHistory: [
         { status: 'Pending', changedAt: new Date('2026-11-11T15:00:00Z'), changedBy: priya._id, note: 'Customer appointment requested' },
-        { status: 'Confirmed', changedAt: new Date('2026-11-11T16:30:00Z'), changedBy: admin._id, note: 'Slot and capacity verified' },
+        { status: 'Confirmed', changedAt: new Date('2026-11-11T16:30:00Z'), changedBy: admin._id, note: 'Laser alignment bay reserved' },
       ],
     });
 
-    // Pending
-    const detailService = createdServices.find((s) => s.category === 'Body & Detailing');
+    // Pending (Koenigsegg Jesko Attack)
+    const ppfService = createdServices.find((s) => s.category === 'Body & Detailing');
     await Booking.create({
       bookingReference: 'BK-20261114-6044',
       customer: david._id,
-      vehicle: davidCar._id,
-      service: detailService._id,
+      vehicle: koenigseggJesko._id,
+      service: ppfService._id,
       bookingDate: '2026-11-14',
       timeSlot: '01:00 PM - 02:00 PM',
-      complaints: 'Complete paint protection detailing and minor scratch removal.',
+      complaints: 'Full frontal self-healing TPU PPF wrap on active carbon front splitters and hood louvers.',
       status: 'Pending',
-      estimatedCost: detailService.basePrice,
-      laborCost: detailService.basePrice,
-      totalCost: detailService.basePrice,
+      estimatedCost: ppfService.basePrice,
+      laborCost: ppfService.basePrice,
+      totalCost: ppfService.basePrice,
       statusHistory: [
         { status: 'Pending', changedAt: new Date('2026-11-11T18:00:00Z'), changedBy: david._id, note: 'Booking submitted online' },
       ],
@@ -412,36 +425,36 @@ const runSeedInline = async () => {
     await Notification.insertMany([
       {
         recipient: alex._id,
-        title: 'Invoice Ready for Payment',
-        message: 'Your service for Honda Civic ZX is complete. Invoice INV-202611-1001 was generated.',
+        title: 'Track Inspection Invoice Paid',
+        message: 'Your service for Ferrari SF90 Stradale is complete. Invoice INV-202611-1001 settled.',
         type: 'invoice',
         isRead: true,
       },
       {
         recipient: alex._id,
-        title: 'Diagnostic Appointment Confirmed',
-        message: 'Technician Elena Rostova has been assigned to Yamaha R15 V4 on Nov 12.',
+        title: 'Telemetry Appointment Confirmed',
+        message: 'Technician Elena Rostova has been assigned to Porsche 911 GT3 RS Weissach on Nov 12.',
         type: 'mechanic_assigned',
         isRead: false,
       },
       {
         recipient: priya._id,
-        title: 'Invoice Awaiting Payment',
-        message: 'Invoice INV-202611-2042 of ₹4,838 for Hyundai Creta SX(O) is ready for payment.',
+        title: 'Active Wing Service Invoice Ready',
+        message: 'Invoice INV-202611-2042 of ₹29,559 for McLaren 765LT Spider is awaiting payment.',
         type: 'invoice',
         relatedId: unpaidInvoice._id,
         isRead: false,
       },
       {
         recipient: marcus._id,
-        title: 'New Service Job in Bay 1',
-        message: 'BMW 330i M Sport brake inspection is assigned to you.',
+        title: 'Hypercar in Bay 1',
+        message: 'Bugatti Chiron Super Sport 300+ Brembo CCM-R overhaul is assigned to you.',
         type: 'service_update',
         isRead: false,
       },
     ]);
 
-    console.log('[Auto-Seed] Demo accounts and sample bookings populated successfully.');
+    console.log('[Auto-Seed] Demo accounts, supercar/hypercar fleet, and sample bookings populated successfully.');
   } catch (err) {
     console.error('[Auto-Seed] Seeding error:', err.message);
   }

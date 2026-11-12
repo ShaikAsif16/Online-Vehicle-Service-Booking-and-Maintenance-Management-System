@@ -10,9 +10,9 @@ const vehicleSchema = new mongoose.Schema(
     },
     type: {
       type: String,
-      enum: ['car', 'motorcycle', 'scooter'],
-      required: [true, 'Vehicle type is required (car, motorcycle, or scooter)'],
-      default: 'car',
+      enum: ['supercar', 'hypercar', 'car', 'motorcycle', 'scooter'],
+      required: [true, 'Vehicle type is required (supercar, hypercar, car, motorcycle, or scooter)'],
+      default: 'supercar',
     },
     registrationNumber: {
       type: String,

@@ -121,9 +121,14 @@ const BookService = () => {
     return <LoadingSpinner text="Initializing service scheduler..." />;
   }
 
-  // Filter services by vehicle type
+  // Filter services by vehicle type (Supercars & Hypercars inherit sports car packages)
   const availableServices = selectedVehicle
-    ? services.filter((s) => s.applicableVehicleTypes.includes(selectedVehicle.type))
+    ? services.filter(
+        (s) =>
+          s.applicableVehicleTypes.includes(selectedVehicle.type) ||
+          ((selectedVehicle.type === 'supercar' || selectedVehicle.type === 'hypercar') &&
+            s.applicableVehicleTypes.includes('car'))
+      )
     : services;
 
   return (
@@ -215,12 +220,25 @@ const BookService = () => {
                   }`}
                 >
                   <div className="w-12 h-12 rounded-xl bg-dark-800 border border-dark-700 flex items-center justify-center text-automotive-orange text-2xl shrink-0">
-                    {v.type === 'motorcycle' ? '🏍' : v.type === 'scooter' ? '🛵' : '🚗'}
+                    {v.type === 'hypercar' ? '🚀' : v.type === 'supercar' ? '🏎️' : v.type === 'motorcycle' ? '🏍' : '🚗'}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <span className="text-[10px] font-mono uppercase bg-dark-800 px-2 py-0.5 rounded text-automotive-orange font-bold">
-                      {v.registrationNumber}
-                    </span>
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <span className="text-[10px] font-mono uppercase bg-dark-800 px-2 py-0.5 rounded text-automotive-orange font-bold">
+                        {v.registrationNumber}
+                      </span>
+                      <span
+                        className={`text-[9px] font-extrabold uppercase tracking-wider px-1.5 py-0.5 rounded border ${
+                          v.type === 'hypercar'
+                            ? 'text-fuchsia-400 bg-fuchsia-500/10 border-fuchsia-500/30'
+                            : v.type === 'supercar'
+                            ? 'text-amber-400 bg-amber-500/10 border-amber-500/30'
+                            : 'text-slate-400 bg-dark-800 border-dark-700'
+                        }`}
+                      >
+                        {v.type}
+                      </span>
+                    </div>
                     <h4 className="text-sm font-bold text-white mt-1 truncate">
                       {v.brand} {v.model}
                     </h4>
