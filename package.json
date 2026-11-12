@@ -1,0 +1,21 @@
+{
+  "name": "vehicle-service-management",
+  "version": "1.0.0",
+  "description": "Online Vehicle Service Booking and Maintenance Management System",
+  "private": true,
+  "scripts": {
+    "server": "cmd /c \"cd server && node server.js\"",
+    "server:dev": "cmd /c \"cd server && node --watch server.js\"",
+    "client": "cmd /c \"cd client && npm run dev\"",
+    "seed": "cmd /c \"cd server && node seed/seeder.js\"",
+    "test": "cmd /c \"cd server && node test/api.test.js\""
+  },
+  "keywords": [
+    "vehicle-service",
+    "automobile",
+    "mern-stack",
+    "service-booking"
+  ],
+  "author": "BTech CSE AI&ML Final Project Team",
+  "license": "ISC"
+}
