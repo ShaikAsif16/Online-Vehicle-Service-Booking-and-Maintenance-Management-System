@@ -8,13 +8,13 @@ echo                  Guide: Dr. N. Sharmila Banu
 echo ======================================================================
 echo.
 echo Starting Backend API Server (Node.js/Express on Port 5000)...
-start "AutoCare Pro Backend Server" cmd /k "cd ..\server && node server.js"
+start "AutoCare Pro Backend Server" cmd /k "cd ..\backend && node server.js"
 
 echo Waiting for database & backend initialization...
 timeout /t 3 > nul
 
 echo Starting Frontend Dev Server (React/Vite on Port 5173)...
-start "AutoCare Pro Frontend Client" cmd /k "cd ..\client && npm run dev"
+start "AutoCare Pro Frontend Client" cmd /k "cd ..\frontend && npm run dev"
 
 timeout /t 3 > nul
 echo.

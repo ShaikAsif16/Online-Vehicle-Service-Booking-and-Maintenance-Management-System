@@ -100,11 +100,11 @@ Both frontend and backend are pre-configured to run concurrently:
 cd "c:\3YR 1SEM\Software E\vehicle-service-management"
 
 # 1. Start the Backend API Server (runs on Port 5000)
-cd server
+cd backend
 npm start
 
 # 2. In a separate terminal, start the Frontend (runs on Port 5173)
-cd ../client
+cd ../frontend
 npm run dev
 ```
 
@@ -128,7 +128,7 @@ node seed/seeder.js
 Run the comprehensive 17-point integration test suite verifying authentication, vehicle creation, booking conflict checks, admin approval, technician repair updates, automatic invoicing, and payment processing:
 
 ```bash
-cd server
+cd backend
 node test/e2e-workflow.test.js
 ```
 
@@ -164,7 +164,7 @@ node test/e2e-workflow.test.js
 
 ```
 vehicle-service-management/
-├── client/
+├── frontend/
 │   ├── src/
 │   │   ├── components/
 │   │   │   ├── common/         # Navbar, Footer, Sidebar, Modals, Badges, Loaders
@@ -179,7 +179,7 @@ vehicle-service-management/
 │   │   │   └── mechanic/       # Dashboard, AssignedJobs, JobDetails, CompletedJobs
 │   │   ├── services/           # Axios REST API client modules
 │   │   └── utils/              # Formatters, currency, constants
-├── server/
+├── backend/
 │   ├── config/                 # Database configuration (db.js)
 │   ├── controllers/            # 11 REST controllers
 │   ├── middleware/             # authMiddleware, roleMiddleware, errorMiddleware

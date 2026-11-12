@@ -7,12 +7,14 @@
   "scripts": {
     "start": "cmd /c \"START_PROJECT_DEMO.bat\"",
     "dev": "cmd /c \"START_PROJECT_DEMO.bat\"",
-    "server": "cmd /c \"cd server && npm start\"",
-    "server:dev": "cmd /c \"cd server && npm run dev\"",
-    "client": "cmd /c \"cd client && npm run dev\"",
-    "client:build": "cmd /c \"cd client && npm run build\"",
-    "seed": "cmd /c \"cd server && npm run seed\"",
-    "test": "cmd /c \"cd server && npm test\""
+    "frontend": "cmd /c \"cd frontend && npm run dev\"",
+    "backend": "cmd /c \"cd backend && npm start\"",
+    "frontend:build": "cmd /c \"cd frontend && npm run build\"",
+    "server": "cmd /c \"cd backend && npm start\"",
+    "server:dev": "cmd /c \"cd backend && npm run dev\"",
+    "client": "cmd /c \"cd frontend && npm run dev\"",
+    "seed": "cmd /c \"cd backend && npm run seed\"",
+    "test": "cmd /c \"cd backend && npm test\""
   },
   "keywords": [
     "vehicle-service",
