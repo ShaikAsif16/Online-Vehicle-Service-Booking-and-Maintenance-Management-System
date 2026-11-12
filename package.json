@@ -1,21 +1,28 @@
 {
-  "name": "vehicle-service-management",
+  "name": "online-vehicle-service-booking",
   "version": "1.0.0",
-  "description": "Online Vehicle Service Booking and Maintenance Management System",
+  "description": "Online Vehicle Service Booking and Maintenance Management System (AutoCare Pro)",
   "private": true,
+  "author": "Shaik Asif (Roll No: 2403a52220) - SR University",
   "scripts": {
-    "server": "cmd /c \"cd server && node server.js\"",
-    "server:dev": "cmd /c \"cd server && node --watch server.js\"",
+    "start": "cmd /c \"START_PROJECT_DEMO.bat\"",
+    "dev": "cmd /c \"START_PROJECT_DEMO.bat\"",
+    "server": "cmd /c \"cd server && npm start\"",
+    "server:dev": "cmd /c \"cd server && npm run dev\"",
     "client": "cmd /c \"cd client && npm run dev\"",
-    "seed": "cmd /c \"cd server && node seed/seeder.js\"",
-    "test": "cmd /c \"cd server && node test/api.test.js\""
+    "client:build": "cmd /c \"cd client && npm run build\"",
+    "seed": "cmd /c \"cd server && npm run seed\"",
+    "test": "cmd /c \"cd server && npm test\""
   },
   "keywords": [
     "vehicle-service",
     "automobile",
     "mern-stack",
-    "service-booking"
+    "service-booking",
+    "react",
+    "nodejs",
+    "express",
+    "mongodb"
   ],
-  "author": "BTech CSE AI&ML Final Project Team",
   "license": "ISC"
 }
